@@ -1,0 +1,21 @@
+<div class="accordion" id="postsAccordion">
+  <div class="card" *ngFor="let post of posts">
+    <div class="card-header" id="heading{{post._id}}">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" [attr.data-target]="'#collapse' + post._id" [attr.aria-expanded]="isOpen === post._id" [attr.aria-controls]="'collapse' + post._id">
+          {{post.titre}}
+        </button>
+        <ng-container *ngFor="let post of posts">
+          {{post._id}}
+        </ng-container>
+      </h2>
+    </div>
+
+    <div [id]="'collapse' + post._id" [ngClass]="{'collapse': isOpen !== post._id, 'show': isOpen === post._id}"
+     [attr.aria-labelledby]="'heading' + post._id">
+      <div class="card-body">
+        {{post.contenu}}
+      </div>
+    </div>
+  </div>
+  </div>
